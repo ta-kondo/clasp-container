@@ -1,0 +1,39 @@
+// VSCode Remote-Development Extension
+{
+    "name": "Clasp",
+
+    "dockerComposeFile": [
+        "../docker-compose.yml"
+    ],
+
+    "service": "clasp",
+
+    "workspaceFolder" : "/home/project",
+
+    // デフォルトのVisual Studio Codeからのコンテナ起動時のコマンドの、
+    // while sleep 1000; do :; doneによる上書きを防止
+    "overrideCommand": false,
+
+    // リモート側へインストールするVSCode拡張
+	"extensions": [
+        "shardulm94.trailing-spaces"
+	],
+
+    // コンテナ内部でのVSCode設定
+    "settings": {
+        "files.exclude": {
+            // dockerフォルダは除外
+            "**/docker": true,
+            // node_modules を表示除外する(をしないに変更 true->false)
+            "**/node_modules": false
+        },
+        // インデントのサイズを 2 に設定
+        "editor.tabSize": 2,
+        // 保存時にフォーマッタを走らせる
+        "editor.formatOnSave": true
+    },
+
+    // 閉じた際、コンテナも停止する
+    "shutdownAction": "stopCompose"
+
+}
