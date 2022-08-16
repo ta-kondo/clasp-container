@@ -6,6 +6,8 @@ FROM node:18.7.0-buster-slim
 
 WORKDIR /home/project
 
+COPY ./project/package*.json ./
+
 RUN apt-get update -y; \
     apt-get upgrade -y; \
     npm install -g npm@8.17.0 @google/clasp; \

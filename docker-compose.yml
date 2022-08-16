@@ -8,7 +8,8 @@ services:
   clasp:
     image: dev-clasp
     build:
-      context: ./docker/
+      context: ./
+      dockerfile: ./docker/Dockerfile
     volumes:
       - ./project/:/home/project/
       - node_modules:/home/project/node_modules/
